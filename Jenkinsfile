@@ -31,7 +31,7 @@ pipeline {
                     withCredentials([file(credentialsId: GOOGLE_CREDENTIALS, variable: 'GOOGLE_AUTH')]) {
                         sh '''
                             gcloud auth activate-service-account --key-file=$GOOGLE_AUTH
-                            gcloud auth configure-docker
+                            gcloud auth configure-docker --quiet
                         '''
                     }
                 }
