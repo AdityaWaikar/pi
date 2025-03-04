@@ -38,14 +38,14 @@ pipeline {
             }
         }
 
-        /*stage('Push Docker Image to Artifact Registry') {
+        stage('Push Docker Image to Artifact Registry') {
             steps {
                 script {
                     // Push the Docker image to the registry
                     sh 'docker push ${DOCKER_IMAGE}'
                 }
             }
-        }*/
+        }
 
         /*stage('Deploy Docker Container') {
             steps {
