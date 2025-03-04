@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        /*stage('Authenticate to Artifact Registry') {
+        stage('Authenticate to Artifact Registry') {
             steps {
                 script {
                     // Use Google Cloud SDK to authenticate (replace with proper authentication for your registry)
@@ -36,7 +36,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
 
         /*stage('Push Docker Image to Artifact Registry') {
             steps {
