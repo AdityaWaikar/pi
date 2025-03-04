@@ -15,16 +15,16 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        /*stage('Build Docker Image') {
             steps {
                 script {
                     // Build Docker image
                     sh 'docker build -t ${DOCKER_IMAGE} .'
                 }
             }
-        }
+        }*/
 
-        stage('Authenticate to Artifact Registry') {
+        /*stage('Authenticate to Artifact Registry') {
             steps {
                 script {
                     // Use Google Cloud SDK to authenticate (replace with proper authentication for your registry)
@@ -36,18 +36,18 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
 
-        stage('Push Docker Image to Artifact Registry') {
+        /*stage('Push Docker Image to Artifact Registry') {
             steps {
                 script {
                     // Push the Docker image to the registry
                     sh 'docker push ${DOCKER_IMAGE}'
                 }
             }
-        }
+        }*/
 
-        stage('Deploy Docker Container') {
+        /*stage('Deploy Docker Container') {
             steps {
                 script {
                     // Remove the container if it already exists
@@ -57,7 +57,7 @@ pipeline {
                     sh 'docker run -d -p 5000:5000 --name myname ${DOCKER_IMAGE}'
                 }
             }
-        }
+        }*/
     }
 }
 
