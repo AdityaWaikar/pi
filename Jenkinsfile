@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        REPO_URL = 'https://github.com/your-username/your-repository.git' // Repository URL
-        DOCKER_IMAGE = 'your-project-id-docker.pkg.dev/your-repo-id/nginx-app:v1' // Artifact Registry URL with image name
-        GOOGLE_CREDENTIALS = 'your-google-credentials-id' // Jenkins Google Service Account credentials
+        REPO_URL = 'https://github.com/AdityaWaikar/pi.git' // Repository URL
+        DOCKER_IMAGE = 'us-docker.pkg.dev/hardy-clover-447804-t3/docker-test/myname:a2' // Artifact Registry URL with image name
+        GOOGLE_CREDENTIALS = '1' // Jenkins Google Service Account credentials
     }
 
     stages {
@@ -51,10 +51,10 @@ pipeline {
             steps {
                 script {
                     // Remove the container if it already exists
-                    sh 'docker rm -f nginx-app || true'
+                    //sh 'docker rm -f nginx-app || true'
 
                     // Run the container with the pushed image
-                    sh 'docker run -d -p 5000:5000 --name nginx-app ${DOCKER_IMAGE}'
+                    sh 'docker run -d -p 5000:5000 --name myname ${DOCKER_IMAGE}'
                 }
             }
         }
