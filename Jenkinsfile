@@ -110,7 +110,7 @@ pipeline {
                             
                             # Connect to the target VM and run Docker commands
                             ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} 
-                            hostname
+                            """ hostname """
                                 
                                 '''
                                 
