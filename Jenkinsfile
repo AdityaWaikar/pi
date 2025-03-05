@@ -48,17 +48,23 @@ pipeline {
             }
         }
 
-        /*stage('Deploy Docker Container') {
-            steps {
-                script {
-                    // Remove the container if it already exists
-                    //sh 'docker rm -f nginx-app || true'
-
-                    // Run the container with the pushed image
-                    sh 'docker run -d -p 5000:5000 --name myname ${DOCKER_IMAGE}'
-                }
+    stage('Deploy Docker Container on VM') {
+    steps {
+        script {
+            // Use SSH to access the target VM
+            sshagent(['1001']) {
+                sh '''
+                ssh -o StrictHostKeyChecking=no root@10.138.0.4 << EOF
+                    docker pull ${DOCKER_IMAGE}
+                    docker stop myname || true
+                    docker rm myname || true
+                    docker run -d -p 5000:5000 --name myname ${DOCKER_IMAGE}
+                EOF
+                '''
             }
-        }*/
+        }
+    }
+}
     }
 }
 
