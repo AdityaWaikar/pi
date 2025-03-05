@@ -76,7 +76,7 @@ pipeline {
                     sshagent(['1002']) {
                         sh '''
                             # Connect to the target VM and run Docker commands
-                            ssh -o StrictHostKeyChecking=no ${TARGET_VM_USER}@${TARGET_VM_IP}
+                            ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP}
                                 # Pull the Docker image
                                 docker pull ${DOCKER_IMAGE}
                                 # Run the new Docker container
