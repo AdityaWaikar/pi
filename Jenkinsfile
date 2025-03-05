@@ -68,7 +68,7 @@ pipeline {
 //         }
 //     }
 // }
-   stages {
+   
         stage('Deploy Docker Container on VM') {
             steps {
                 script {
@@ -98,7 +98,7 @@ pipeline {
                 }
             }
         }
-    }
+    
     }
 }
 
