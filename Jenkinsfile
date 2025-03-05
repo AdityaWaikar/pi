@@ -70,10 +70,7 @@ pipeline {
         script {
             sshagent(['1002']) {
                 sh '''
-                    ssh -o StrictHostKeyChecking=no jenkins@10.138.0.4 <<'EOF'
-                    echo 'ssh successful'
-                    # Add more commands here if needed
-                    EOF
+                    ssh -o StrictHostKeyChecking=no jenkins@10.138.0.4 "echo 'ssh successful'"
                 '''
             }
         }
