@@ -70,7 +70,12 @@ pipeline {
         script {
             sshagent(['1002']) {
                 sh '''
-                    ssh -o StrictHostKeyChecking=no jenkins@10.138.0.4 "echo 'ssh successful'"
+                    ssh -o StrictHostKeyChecking=no jenkins@10.138.0.4
+                    docker pull ${DOCKER_IMAGE}
+                    docker run -d -p 5000:5000 --name myname ${DOCKER_IMAGE}
+
+
+ "echo 'ssh successful'"
                 '''
             }
         }
