@@ -32,6 +32,7 @@ pipeline {
                         sh '''
                             gcloud auth activate-service-account --key-file=$GOOGLE_AUTH
                             gcloud auth configure-docker --quiet
+                            gcloud auth configure-docker us-docker.pkg.dev
                         '''
                     }
                 }
