@@ -4,7 +4,7 @@ pipeline {
     environment {
         REPO_URL = 'https://github.com/AdityaWaikar/pi.git' // Repository URL
         DOCKER_IMAGE = 'us-docker.pkg.dev/hardy-clover-447804-t3/docker-test/myname:a2' // Artifact Registry URL with image name
-        TARGET_VM_IP = '10.138.0.4'
+        TARGET_VM_IP = '34.169.227.31'
         CONTAINER_PORT = '5000'
         CONTAINER_NAME = 'myapp'
         GOOGLE_CREDENTIALS = '12' // Jenkins Google Service Account credentials
