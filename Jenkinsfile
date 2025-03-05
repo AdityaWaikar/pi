@@ -76,14 +76,16 @@ pipeline {
                     sshagent(['1002']) {
                         sh '''
                             # Connect to the target VM and run Docker commands
-                            ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP}
+                            ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} << EOF
                                 # Pull the Docker image
                                 docker pull ${DOCKER_IMAGE}
                                 # Run the new Docker container
                                 docker run -d \
                                     -p ${CONTAINER_PORT}:${CONTAINER_PORT} \
                                     --name ${CONTAINER_NAME} \
-                                    ${DOCKER_IMAGE}'''
+                                    ${DOCKER_IMAGE}
+                                EOF
+                                '''
                                 
                                 /*# Stop and remove existing container if it exists
                                 docker stop ${CONTAINER_NAME} || true
