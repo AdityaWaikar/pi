@@ -48,6 +48,23 @@ pipeline {
             }
         }
 
+//     stage('Deploy Docker Container on VM') {
+//     steps {
+//         script {
+//             // Use SSH to access the target VM
+//             sshagent(['1002']) {
+//                 sh '''
+//                 ssh -o StrictHostKeyChecking=no jenkins@10.138.0.4 << EOF
+//                     docker pull ${DOCKER_IMAGE}
+//                     docker stop myname || true
+//                     docker rm myname || true
+//                     docker run -d -p 5000:5000 --name myname ${DOCKER_IMAGE}
+//                 EOF
+//                 '''
+//             }
+//         }
+//     }
+// }
     stage('Deploy Docker Container on VM') {
     steps {
         script {
@@ -55,10 +72,7 @@ pipeline {
             sshagent(['1002']) {
                 sh '''
                 ssh -o StrictHostKeyChecking=no jenkins@10.138.0.4 << EOF
-                    docker pull ${DOCKER_IMAGE}
-                    docker stop myname || true
-                    docker rm myname || true
-                    docker run -d -p 5000:5000 --name myname ${DOCKER_IMAGE}
+                echo 'ssh successful'
                 EOF
                 '''
             }
