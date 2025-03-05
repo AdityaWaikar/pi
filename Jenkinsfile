@@ -75,9 +75,7 @@ pipeline {
                     // Use SSH Agent credentials to connect to the target VM
                     sshagent(['1002']) {
                         sh '''
-                            '''
-                    # Securely copy Dockerfile and source files to the target VM
-                    scp -o StrictHostKeyChecking=no -r .jenkins@${TARGET_VM_IP}:/home/jenkins/
+                            
                             # Connect to the target VM and run Docker commands
                             ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} 
                                 # Pull the Docker image
