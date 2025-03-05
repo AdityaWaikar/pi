@@ -110,6 +110,7 @@ pipeline {
                             
                             # Connect to the target VM and run Docker commands
                             ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} """
+                            gcloud auth configure-docker us-docker.pkg.dev
                             docker pull ${DOCKER_IMAGE}
                             # Run the new Docker container
                             docker run -d \
