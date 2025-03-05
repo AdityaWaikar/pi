@@ -75,8 +75,11 @@ pipeline {
                     // Use SSH Agent credentials to connect to the target VM
                     sshagent(['1002']) {
                         sh '''
+                            '''
+                    # Securely copy Dockerfile and source files to the target VM
+                    scp -o StrictHostKeyChecking=no -r .jenkins@${TARGET_VM_IP}:/home/jenkins/
                             # Connect to the target VM and run Docker commands
-                            ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} << 'EOF'
+                            ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} 
                                 # Pull the Docker image
                                 docker pull ${DOCKER_IMAGE}
                                 # Run the new Docker container
@@ -84,7 +87,7 @@ pipeline {
                                     -p ${CONTAINER_PORT}:${CONTAINER_PORT} \
                                     --name ${CONTAINER_NAME} \
                                     ${DOCKER_IMAGE}
-                                EOF
+                                
                                 '''
                                 
                                 /*# Stop and remove existing container if it exists
