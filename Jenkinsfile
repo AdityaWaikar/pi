@@ -69,7 +69,39 @@ pipeline {
 //     }
 // }
    
-        stage('Deploy Docker Container on VM') {
+        // stage('Deploy Docker Container on VM') {
+        //     steps {
+        //         script {
+        //             // Use SSH Agent credentials to connect to the target VM
+        //             sshagent(['1002']) {
+        //                 sh '''
+                            
+        //                     # Connect to the target VM and run Docker commands
+        //                     ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} 
+        //                         # Pull the Docker image
+        //                         docker pull ${DOCKER_IMAGE}
+        //                         # Run the new Docker container
+        //                         docker run -d \
+        //                             -p ${CONTAINER_PORT}:${CONTAINER_PORT} \
+        //                             --name ${CONTAINER_NAME} \
+        //                             ${DOCKER_IMAGE}
+                                
+        //                         '''
+                                
+        //                         /*# Stop and remove existing container if it exists
+        //                         docker stop ${CONTAINER_NAME} || true
+        //                         docker rm ${CONTAINER_NAME} || true
+                                
+                                
+                                
+        //                         # Optional: Verify container is running
+        //                         docker ps | grep ${CONTAINER_NAME}
+        //                     '''*/
+        //             }
+        //         }
+        //     }
+        // }
+            stage('Deploy Docker Container on VM') {
             steps {
                 script {
                     // Use SSH Agent credentials to connect to the target VM
@@ -78,13 +110,7 @@ pipeline {
                             
                             # Connect to the target VM and run Docker commands
                             ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} 
-                                # Pull the Docker image
-                                docker pull ${DOCKER_IMAGE}
-                                # Run the new Docker container
-                                docker run -d \
-                                    -p ${CONTAINER_PORT}:${CONTAINER_PORT} \
-                                    --name ${CONTAINER_NAME} \
-                                    ${DOCKER_IMAGE}
+                            hostname
                                 
                                 '''
                                 
@@ -101,7 +127,6 @@ pipeline {
                 }
             }
         }
-    
     }
 }
 
