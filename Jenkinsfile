@@ -52,7 +52,7 @@ pipeline {
     steps {
         script {
             // Use SSH to access the target VM
-            sshagent(['1001']) {
+            sshagent(['1002']) {
                 sh '''
                 ssh -o StrictHostKeyChecking=no root@10.138.0.4 << EOF
                     docker pull ${DOCKER_IMAGE}
