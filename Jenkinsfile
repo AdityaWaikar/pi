@@ -110,7 +110,12 @@ pipeline {
                             
                             # Connect to the target VM and run Docker commands
                             ssh -o StrictHostKeyChecking=no jenkins@${TARGET_VM_IP} """
-                            hostname """
+                            docker pull ${DOCKER_IMAGE}
+                            # Run the new Docker container
+                            docker run -d \
+                            -p ${CONTAINER_PORT}:${CONTAINER_PORT} \
+                            --name ${CONTAINER_NAME} \
+                            ${DOCKER_IMAGE} """
                                 
                                 '''
                                 
