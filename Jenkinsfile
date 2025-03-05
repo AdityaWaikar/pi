@@ -85,7 +85,7 @@ pipeline {
                                     --name ${CONTAINER_NAME} \
                                     ${DOCKER_IMAGE}'''
                                 
-                                # Stop and remove existing container if it exists
+                                /*# Stop and remove existing container if it exists
                                 docker stop ${CONTAINER_NAME} || true
                                 docker rm ${CONTAINER_NAME} || true
                                 
@@ -93,7 +93,7 @@ pipeline {
                                 
                                 # Optional: Verify container is running
                                 docker ps | grep ${CONTAINER_NAME}
-                            '''
+                            '''*/
                     }
                 }
             }
